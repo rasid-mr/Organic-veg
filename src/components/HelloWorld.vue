@@ -22,7 +22,7 @@
     class="mySwiper"
   >
     <swiper-slide><img src="https://source.unsplash.com/random" alt="" /></swiper-slide><swiper-slide><img src="https://source.unsplash.com/wsanter" /> </swiper-slide
-    ><swiper-slide>Slide 3</swiper-slide><swiper-slide>Slide 4</swiper-slide
+    ><swiper-slide>Slisde 3</swiper-slide><swiper-slide>Slide 4</swiper-slide
     ><swiper-slide>Slide 5</swiper-slide><swiper-slide>Slide 6</swiper-slide
     ><swiper-slide>Slide 7</swiper-slide><swiper-slide>Slide 8</swiper-slide
     ><swiper-slide>Slide 9</swiper-slide>
