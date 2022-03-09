@@ -1,0 +1,22 @@
+{
+  "name": "organic-veg",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "kute.js": "^2.2.2",
+    "owl.carousel": "^2.3.4",
+    "swiper": "^8.0.7",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.0",
+    "sass": "^1.49.9",
+    "vite": "^2.8.0"
+  }
+}
