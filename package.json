@@ -3,18 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host ",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "jquery": "^3.6.0",
-    "kute.js": "^2.2.2",
-    "owl.carousel": "^2.3.4",
+    "firebase": "^9.6.8",
+    "gsap": "^3.9.1",
     "swiper": "^8.0.7",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.0.0",
     "@vitejs/plugin-vue": "^2.2.0",
     "sass": "^1.49.9",
     "vite": "^2.8.0"

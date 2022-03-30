@@ -1,24 +1,31 @@
-
 <template>
-
- <KuteJs/>
-  <HelloWorld/>
-
- 
+  <!-- <LandingPage />
+  <GladiatorSection />
+  <PepsiVsBroccole />
+  <ProductPage /> -->
+  <router-view></router-view>
+   
 </template>
 
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import KuteJs from './components/KuteJs.vue'
  
  
-
 </script>
 
-
 <style>
- body {
-   margin: 0;
- }
- 
+body {
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  background: rgb(255, 248, 248);
+}
+ html {
+    box-sizing: border-box;     
+     
+  }
+   *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
 </style>
