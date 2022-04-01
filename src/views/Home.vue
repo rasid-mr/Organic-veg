@@ -1,7 +1,7 @@
 <template>
-  <LandingPage />
+  <!-- <LandingPage /> -->
   <GladiatorSection />
-  <PepsiVsBroccole />
+  <!-- <PepsiVsBroccole /> -->
   <ProductPage />  
   <customerReview />
   <TheFooter />

@@ -185,6 +185,7 @@ const reviews = reactive([
      
     color: #36454f;
     display: grid;
+    margin-block-start: var(--size-13);
     
     &_question {
 
@@ -195,13 +196,14 @@ const reviews = reactive([
 
          
         &-header {
-             color: $color-primary-dark-green;
-             font-size: var(--font-size-fluid-2);
+             color: $color-primary-purple;
+             font-size:var(--font-size-fluid-3);
              margin-bottom: var(--size-fluid-5);
         }
         &_cause {
             line-height: 2.5;
             white-space: nowrap;
+            // font-size: ;
 
             @include respond(tab-port) {
                 white-space: pre-wrap;
@@ -209,7 +211,7 @@ const reviews = reactive([
 
             & li {
                 width: fit-content;
-                font-size: var(--font-size-fluid-1);
+                font-size: var(--font-size-6);
                 font-weight: 600;
                 --right: rgb(75, 153, 130);
                 --left: #36454f;
@@ -224,7 +226,7 @@ const reviews = reactive([
 
                
                @include respond(phone) {
-                   font-size: var(--font-size-fluid-0);
+                   font-size: var(--font-size-fluid-1);
                }
                     
             }
@@ -255,7 +257,7 @@ const reviews = reactive([
                 justify-content: flex-start;
 
                 & h4 {
-                    color: $color-primary-light-green;
+                    color: $color-primary-cyan;
                     font-size: var(--font-size-fluid-1);
                     margin-bottom: var(--size-fluid-1);
                 }
@@ -267,7 +269,7 @@ const reviews = reactive([
               }
               & p {
                   font-size: var(--font-size-fluid-0);
-                  color: inherit;
+                  color: $color-blue;
               }
             }
             &-info {
