@@ -60,9 +60,7 @@
             Roman gladiators had a diet that was mostly vegetarian,according to
             an analysis of bones from a cemetery. Where fighters were buried.
           </p>
-          <a class="roman_text-link" xlink:href="https://www.youtube.com/"
-            >Read more</a
-          >
+          <TheLink link="https://www.bbc.com/news/education-29723384" />
         </div>
       </div>
     </div>
@@ -70,10 +68,11 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import TheLink from '../slots/TheLink.vue'
 
 gsap.registerPlugin(ScrollTrigger);
 onMounted(() => {
@@ -81,39 +80,35 @@ onMounted(() => {
 
   gladAni.fromTo(
     ".glad_illustration-pyramid",
-    { autoAlpha: 0.3, x: -200 },
-    { autoAlpha: 1, x: 0, duration: 1 }
-  );
-  gladAni.fromTo(
-    ".svg_text-header",
-    { attr: { textLength: 1500 }, autoAlpha: 0.8 },
-    { attr: { textLength: 700 }, autoAlpha: 1, duration: 2 },
-    "-.5"
-  );
-  gladAni.fromTo(
-    ".svg_text-discription",
-    { attr: { textLength: 900 }, autoAlpha: 0.8 },
-    { attr: { textLength: 470 }, autoAlpha: 1, duration: 1.2, stagger: 0.2 },
-    "-=.5"
-  );
+    { autoAlpha: 0, x: -200 },
+    { autoAlpha: 1, x: 0, duration: .8 },
+  )
+  
+  
+    gladAni.fromTo('.roman', 
+    {x: -50, opacity:0},
+    {x:0 , opacity:1, duration:.8}, "-=.2"
+    )
 
   gladAni.to("#maskerH", {
     attr: { x: 3 },
     duration: 4,
     // delay:1,
     ease: "none",
-    repeat: -1,
-    repeatDelay: 1.5,
+    // repeat: -1,
+    // repeatDelay: 1.5,
     transformOrigin: "center right",
   });
-  gladAni.to(".zigzag", {
-    xPercent: 110,
-    duration: 1.5,
-    repeatDelay: 4,
-    repeat: -1,
+  // gladAni.to(".zigzag", {
+  //   xPercent: 110,
+  //   duration: 1.5,
+  //   repeatDelay: 4,
+  //   repeat: -1,
+  // });
+  gladAni.set(".zigzag", { xPercent: 0,
+  // repeat:-1,
+  // repeatDelay:5.5,
   });
-  gladAni.set(".zigzag", { xPercent: 0, repeat: -1, repeatDelay: 5.5 });
-
   ScrollTrigger.create({
     animation: gladAni,
     trigger: ".glad",
@@ -122,7 +117,20 @@ onMounted(() => {
     // id: "Change between slides",
     toggleActions: "play pause resume reset",
   });
+
+  ScrollTrigger.getAll().forEach((element) => {
+      element.enable();
+      element.refresh();
+      // console.log(element.vars);
+    })
 });
+
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((element) => {
+      element.kill();
+      // console.log({ element });
+    });
+})
 </script>
 
 <style lang="scss" scoped>
@@ -136,6 +144,7 @@ onMounted(() => {
   grid-template-rows: 100px 1fr;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 3rem;
+  margin-block-start: var(--size-fluid-8);
 
   @include respond(tab-port) {
     grid-auto-flow: row;
@@ -170,7 +179,7 @@ onMounted(() => {
     }
   }
 
-  margin: 10rem 0;
+  
 
   & > * {
     flex: 1 0;

@@ -1,8 +1,5 @@
 <template>
   <section class="container">
-       <h1 class="header">
-         GEM QUALITY VEGETABLE & FRUITS
-      </h1>
     <swiper
       :spaceBetween="30"
       :centeredSlides="true"
@@ -15,78 +12,81 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide>
-        <img src="../assets/mixed-vegetable 1.jpg"      alt="" />
-        </swiper-slide>
-      <!-- <swiper-slide><img src="../assets/mixed-fruit(1).jpg" alt="" /> </swiper-slide> -->
-      <!-- <swiper-slide><img src="../assets/kitchen-vegetable(1).jpg" alt="" /></swiper-slide> -->
-      <swiper-slide><img src="../assets/strwberry(1).jpg" alt="" /></swiper-slide>
-      <swiper-slide><img src="../assets/fruit-chocolete.jpg" alt="" /></swiper-slide> 
-    </swiper>
+      <h1 class="header">GEM QUALITY VEGETABLE & FRUITS</h1>
+       
+      <TheHeader class="pot" />
+       
 
-    <!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-    <svg
-      version="1.1"
-      id="heart"
-      class="heart"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      x="0px"
-      y="0px"
-      viewBox="0 0 924 458.1"
-      style="enable-background: new 0 0 924 458.1"
-      xml:space="preserve"
-    >
-      <mask id="fill">
-        <rect id="maskerH" width="700" height="600" x="0" y="450" fill="#fff" />
-      </mask>
-       <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="50%" stop-color="rgb(255, 82, 82)"/>
-        <stop offset="50%" stop-color="#94ff4d"/>
-        <!-- <stop offset="100%" stop-color="#73a24e"/> -->
-      </linearGradient>
-      <filter
-        id="filter"
-        class="filter"
-        x="-3%"
-        y="0%"
-        width="120%"
-        height="120%"
+      <!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+      <svg
+        version="1.1"
+        id="heart"
+        class="heart"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 924 458.1"
+        style="enable-background: new 0 0 924 458.1"
+        xml:space="preserve"
       >
-        <feOffset in="SourceAlpha" dx="10" dy="10"></feOffset>
-        <feGaussianBlur stdDeviation="10" result="DROP"></feGaussianBlur>
-        <feFlood flood-color="#000" result="COLOR"></feFlood>
-        <feComposite
-          in="DROP"
-          in2="COLOR"
-          operator="in"
-          result="SHADOW1"
-        ></feComposite>
-        <feComponentTransfer in="SHADOW1" result="SHADOW">
-          <feFuncA type="table" tableValues="0 0.5"></feFuncA>
-        </feComponentTransfer>
-        <feMerge>
-          <feMergeNode in="SourceGraphic"></feMergeNode>
-          <feMergeNode in="SHADOW"></feMergeNode>
-        </feMerge>
-      </filter>
-      <g class="heart_fill">
-        <path
-          class="st0"
-          fill="url(#Gradient2)"
-          mask="url(#fill)"
-          filter="url(#filter)"
-          d="M573.3,279.3l-46.8,46.2L420.8,429.8l-2.1,2.1l-11.9,11.8l-25-24.7l-2.2-2.2l-45.7-45.1h0l-14.6-14.5l-8.6-8.5
+        <mask id="fill">
+          <rect
+            id="maskerH"
+            width="700"
+            height="600"
+            x="0"
+            y="450"
+            fill="#fff"
+          />
+        </mask>
+        <linearGradient id="Gradient2" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="50%" stop-color="rgb(255, 82, 82)" />
+          <stop offset="50%" stop-color="#94ff4d" />
+          <!-- <stop offset="100%" stop-color="#73a24e"/> -->
+        </linearGradient>
+        <filter
+          id="filter"
+          class="filter"
+          x="-3%"
+          y="0%"
+          width="120%"
+          height="120%"
+        >
+          <feOffset in="SourceAlpha" dx="10" dy="10"></feOffset>
+          <feGaussianBlur stdDeviation="10" result="DROP"></feGaussianBlur>
+          <feFlood flood-color="#000" result="COLOR"></feFlood>
+          <feComposite
+            in="DROP"
+            in2="COLOR"
+            operator="in"
+            result="SHADOW1"
+          ></feComposite>
+          <feComponentTransfer in="SHADOW1" result="SHADOW">
+            <feFuncA type="table" tableValues="0 0.5"></feFuncA>
+          </feComponentTransfer>
+          <feMerge>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+            <feMergeNode in="SHADOW"></feMergeNode>
+          </feMerge>
+        </filter>
+        <g class="heart_fill">
+          <path
+            class="st0"
+            fill="url(#Gradient2)"
+            mask="url(#fill)"
+            filter="url(#filter)"
+            d="M573.3,279.3l-46.8,46.2L420.8,429.8l-2.1,2.1l-11.9,11.8l-25-24.7l-2.2-2.2l-45.7-45.1h0l-14.6-14.5l-8.6-8.5
 		l-25.8-25.4l-3.5-3.4l-41.1-40.6c-8.2-8.2-15.1-17.5-20.5-27.6c-0.5-0.9-1-1.8-1.4-2.8c-29.1-58-5.7-128.6,52.4-157.7
 		c22.4-11.2,47.7-15,72.4-10.8h0c0.4,0.1,0.8,0.1,1.1,0.2c4,0.7,8,1.6,11.9,2.8c10.3,3,20,7.3,29.1,12.9c1,0.6,1.9,1.2,2.8,1.8
 		c6.6,4.4,12.8,9.4,18.5,15.1l0.4-0.4l0.4,0.4c3.4-3.4,7-6.6,10.8-9.6c0.8-0.6,1.7-1.3,2.5-1.9c26-19.2,58.7-26.8,90.5-21.1
 		c4,0.7,8,1.6,11.9,2.8c1.3,0.4,2.6,0.8,3.9,1.2c1,0.3,2.1,0.7,3.1,1.1c8.6,3.1,16.8,7.1,24.4,12.1c1.7,1.1,3.3,2.2,4.9,3.4
 		c52.5,38.2,64.1,111.7,26,164.2C581.6,270.2,577.6,274.9,573.3,279.3z"
-        />
-      </g>
-      <path
-        class="st2 heart_icon"
-        d="M603.3,115c-14.5-14.6-32.7-25.1-52.5-30.5c-1.3-0.4-2.6-0.7-4-1c-5.7-1.4-11.5-2.3-17.4-2.8
+          />
+        </g>
+        <path
+          class="st2 heart_icon"
+          d="M603.3,115c-14.5-14.6-32.7-25.1-52.5-30.5c-1.3-0.4-2.6-0.7-4-1c-5.7-1.4-11.5-2.3-17.4-2.8
 	c-1-0.1-2-0.2-3.1-0.2c-5.1-0.3-10.3-0.3-15.4,0.1c-28.1,1.9-54.7,13.7-74.8,33.5l-0.4-0.4l-0.4,0.4c-13.2-12.9-29.2-22.5-46.7-28.1
 	c-1-0.3-2-0.6-3-0.9c-13.5-3.9-27.6-5.4-41.6-4.5c-0.4,0-0.8,0-1.2,0.1c-25.7,2-50.1,12.3-69.4,29.4c-1.8,1.6-3.6,3.3-5.4,5
 	c-33.4,33.5-43.9,83.5-26.6,127.6c0.4,0.9,0.7,1.9,1.1,2.8c6,14.2,14.6,27.1,25.5,38l38.9,38.4l3.1,3l84.2,83.1l2.2,2.2l22.1,21.8
@@ -96,29 +96,48 @@
 	c10.4,3.4,20.3,8.3,29.3,14.5c5.9,4,11.4,8.6,16.4,13.6l1.1,1.1l0.3-0.4l0.4,0.4l1.1-1.1c22.6-22.7,53.7-34.9,85.7-33.9
 	c1.3,0,2.5,0.1,3.8,0.2c1,0.1,2,0.1,3.1,0.2c6.4,0.6,12.8,1.7,19.1,3.4c1.3,0.3,2.7,0.7,4,1.1c61.3,18.5,96,83.3,77.4,144.6
 	C624.7,251,614.7,267.6,601.2,281.1z"
-      />
+        />
 
-      <text
-        x="80"
-        textLength="800"
-        lengthAdjust="spacing"
-        transform="matrix(1 0 0 1 361.9738 246.0893)"
-        class="health"
-         filter="url(#filter)"
-      >
-        Be Healthy
-      </text>
-      <text  filter="url(#filter)" x="80" textLength="500" lengthAdjust="spacing" transform="matrix(1 0 0 1 361.9739 246.09)" class="organic">
-        Eat Organic
-      </text>
-    </svg>
+        <text
+          x="80"
+          textLength="800"
+          lengthAdjust="spacing"
+          transform="matrix(1 0 0 1 361.9738 246.0893)"
+          class="health"
+          filter="url(#filter)"
+        >
+          Be Healthy
+        </text>
+        <text
+          filter="url(#filter)"
+          x="80"
+          textLength="500"
+          lengthAdjust="spacing"
+          transform="matrix(1 0 0 1 361.9739 246.09)"
+          class="organic"
+        >
+          Eat Organic
+        </text>
+      </svg>
+      <swiper-slide>
+        <img src="../assets/mixed-vegetable-1.jpg" alt="" />
+      </swiper-slide>
+      
+      <swiper-slide
+        ><img src="../assets/strwberry(1).jpg" alt=""
+      /></swiper-slide>
+      <swiper-slide
+        ><img src="../assets/fruit-chocolete.jpg" alt=""
+      /></swiper-slide>
+    </swiper>
+
     <!-- down arrow -->
     <div class="indicator"></div>
   </section>
 </template>
 
 <script>
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import gsap from "gsap";
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -127,40 +146,53 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 // import required modules
 import { Autoplay, EffectFade } from "swiper";
-
+import TheHeader from './TheHeader.vue'
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    TheHeader,
   },
+   
+
+ 
 
   setup() {
-    console.log("wor");
+    
     onMounted(() => {
       const tl = gsap.timeline();
-      tl.set(".organic", { scale: 1.2, xPercent:-5,  autoAlpha: 0 })
-      tl.set(".health", { autoAlpha: 0, scale: 1 })
-      tl.set(".header", {opacity:.4, xPercent:40})
-      tl.to(".header", {opacity:1, xPercent:0, duration:2, ease:"expo.out"})
+      tl.set(".organic", { scale: 1.2, xPercent: -5, autoAlpha: 0 });
+      tl.set(".health", { autoAlpha: 0, scale: 1 });
+      tl.set(".header", { opacity: 0.4, xPercent: 40 });
+      tl.to(".header", {
+        opacity: 1,
+        xPercent: 0,
+        duration: 2,
+        ease: "expo.out",
+      });
       tl.to(
         "#maskerH",
         {
           attr: { y: 0 },
           duration: 2,
-          delay:1,
+          delay: 1,
           ease: "none",
           transformOrigin: "bottom center",
         },
         "+=.4"
-      )
-      tl.to(".heart_fill", { x: 29, duration: 1,  ease: "power4.out" });
-      tl.to(".heart_icon", {  stroke: "transparent", duration: 0.4, ease: "back" });
+      );
+      tl.to(".heart_fill", { x: 29, duration: 1, ease: "power4.out" });
+      tl.to(".heart_icon", {
+        stroke: "transparent",
+        duration: 0.4,
+        ease: "back",
+      });
       // tl.to(".heart_icon", { attr: {filter:"url(#filter)"}})
       tl.to(
         ".health",
         { attr: { textLength: 400 }, autoAlpha: 1, scale: 1, duration: 1.5 },
         "+=.5"
-      )
+      );
       tl.to(
         ".health",
         {
@@ -170,22 +202,28 @@ export default {
           transformOrigin: "center center",
         },
         "+=.5"
-      )
-      
+      );
+
       tl.to(
         ".organic",
         {
-          attr:{textLength:400},
+          attr: { textLength: 400 },
           autoAlpha: 1,
           scale: 1,
-          xPercent:0,
+          xPercent: 0,
           duration: 1,
           transformOrigin: "center center",
           ease: "bounce3",
         },
         "+=.12"
-      )
+      );
+
+      ///////////
+      // refresh scrolltrigger
+       
+      
     });
+     
     return {
       modules: [EffectFade, Autoplay],
     };
@@ -197,6 +235,14 @@ export default {
 @import "open-props/style";
 @import "open-props/normalize";
 
+// .fla {
+//   position: absolute;
+//   height: 10vh;
+//   top: 0;
+//   left: 0;
+//   z-index: 1001;
+//   width: 100%;
+// }
 // svg class formal style
 .st0 {
   // fill: #6c63ff;
@@ -212,89 +258,81 @@ export default {
   min-height: 100vh;
   max-width: 100vw;
   position: relative;
-  
-   
 
-  .header{
-  
+  .header {
     font-size: var(--font-size-fluid-3);
-    color:#94ff4d;
-     
+    color: #94ff4d;
+
     //  background-color: rgba(0,0,0, 0.1);
     position: absolute;
     top: 30%;
-    left:$space-left;
+    left: $space-left;
     width: fit-content;
-    
-    font-family: 'Roboto Mono', monospace;
+
+    font-family: "Roboto Mono", monospace;
     z-index: 2;
-     background: inherit;
+    background: inherit;
     background-attachment: fixed;
     @include respond(tab-land) {
-       left:$space-left-land
+      left: $space-left-land;
     }
     @include respond(tab-port) {
-       left:$space-left-port
+      left: $space-left-port;
     }
     @include respond(phone) {
-       left:$space-left-phone
+      left: $space-left-phone;
     }
 
     &::after {
-content: "";
-  position: absolute;
-  top: -5%;
-  left: 0;
-  width: 90%;
-  height: 100%;
-  z-index: 1;
-   background: rgba(0, 0, 0, 0.35);
-   mix-blend-mode: color-dodge;
-  -webkit-filter: blur(12px);
-  filter: blur(12px);
-  transform: scale(1) translateY(20px);
-    
+      content: "";
+      position: absolute;
+      top: -5%;
+      left: 0;
+      width: 90%;
+      height: 100%;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.35);
+      mix-blend-mode: color-dodge;
+      -webkit-filter: blur(12px);
+      filter: blur(12px);
+      transform: scale(1) translateY(20px);
     }
-    
   }
   .heart {
     // width: var(--size-fluid-10);
     width: #{scaleValue(700)};
- 
-    z-index: 2;
+
+    z-index: 11;
     position: absolute;
     // inset: 0;
     top: 60%;
     left: 68%;
     transform: translate(-50%, -50%);
 
-    
     @include respond(tab-land) {
       width: #{scaleValue(700)};
-      top:70%;
+      top: 70%;
       left: 60%;
     }
-    
+
     @include respond(tab-port) {
       width: #{scaleValue(700)};
-      top:62%;
+      top: 62%;
       left: 60%;
     }
     @include respond(phone) {
-       top: 60%;
+      top: 60%;
       //  left:55%;
       left: 60%;
-      width: var(--size-fluid-10)
-       
+      width: var(--size-fluid-10);
     }
-     @include respond(sm-phone) {
-     width: var(--size-fluid-10);
-     left: 50%;
-     }
-    
+    @include respond(sm-phone) {
+      width: var(--size-fluid-10);
+      left: 50%;
+    }
+
     &_fill {
       // i am empty
-      
     }
 
     &_icon {
@@ -319,38 +357,26 @@ content: "";
   }
 }
 
-.health, .organic {
+.health,
+.organic {
   // font-size: 64px;
   font-size: var(--font-size-fluid-3);
   font-weight: 600;
-  fill:$color-primary-light-green-2;
+  fill: $color-primary-light-green-2;
   stroke: none;
   letter-spacing: 2px;
   stroke-miterlimit: 10;
 
   @include respond(phone) {
     font-size: var(--font-size-7);
-     
   }
-   
 }
-
-// .filter {
-//   animation: fill 4s linear forwards;
-// }
-// @keyframes fill {
-//   from {
-//     y: 50%;
-//   }
-//   to {
-//     y: 0%;
-//   }
-// }
 
 // carousoul section
 .swiper {
   width: 100%;
   height: 100vh;
+  height: -webkit-fill-available;
 }
 
 .swiper-slide {
@@ -378,50 +404,48 @@ content: "";
   object-fit: cover;
 }
 
-
-
 // down arrow
 
 .indicator {
-    width: 40px; 
-    height: 70px;
-    border: 2px solid #fff;
-    border-radius: 20px; 
-    position: absolute;
-    z-index: 10;
-    top:92%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: var(--size-fluid-4);
+  height: var(--size-fluid-5);
+  border: 2px solid #fff;
+  border-radius: var(--size-fluid-2);
+  position: absolute;
+  z-index: 10;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include respond(tab-port) {
+    border-radius: var(--size-fluid-4);
+  }
 }
 .indicator:before {
-    content: ""; 
-    position: absolute;
-    width: 10px; 
-    height: 10px;
-    background: #fff; 
-    margin: auto;
-    left: 0; 
-    right: 0;
-    top: 5px; 
-    border-radius: 50%;
-    animation: animate 1s linear infinite; 
-    animation-delay: 10s;
+  content: "";
+  position: absolute;
+  width: var(--size-fluid-1);
+  height: var(--size-fluid-1);
+  background: #fff;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 5px;
+  border-radius: 50%;
+  animation: animate 1s linear infinite;
+  animation-delay: 10s;
 }
 @keyframes animate {
-    0% {
-        opacity: 1; 
-        transform:translateY(0px);
-    }
-    100% {
-        opacity: 0.2; 
-      transform:translateY(50px);
-        
-    }
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
 }
 
+/////////////
+//  header css
 
-.mySwiper {
-  // mix-blend-mode: difference;
-  // box-shadow:inset 100px 100px 10px rgb(24, 21, 21);
-}
 </style>

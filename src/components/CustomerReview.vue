@@ -2,7 +2,7 @@
     <div class="pot">
         <div class="review">
             <div class="review_question">
-                <h2 class="review_question-header">
+                <h2 id="header" class="review_question-header">
                     Why our product is market standard?
                 </h2>
                 <ul class="review_question_cause">
@@ -42,27 +42,71 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 onMounted(() => {
+ScrollTrigger.matchMedia({
+    "(min-width: 799px)": function()  {
 
-const tween = gsap.to("li", {
-  backgroundImage:
-    "linear-gradient(90deg, var(--left) 0%, var(--left) 100%, var(--right) 100%)",
-  duration: .4,
-  ease: "back",
-  stagger: {
-    each: 0.1,
-    ease: "power2.out"
-  },
-  scrollTrigger:{
-      start:"top center",
-      trigger:'.review_question',
-      end:'+=450',
-      scrub:true,
-      markers:true,
-      id:'hell'
-     
-     
-  }
-});
+
+        const tween = gsap.to("li", {
+          backgroundImage:
+            "linear-gradient(90deg, var(--left) 0%, var(--left) 100%, var(--right) 100%)",
+          duration: .4,
+        //   ease: "back.in",
+          ease:"none",
+          stagger: {
+            each: 0.1,
+            ease: "power2.out"
+          },
+           
+               
+        scrollTrigger:{
+            start:"center center",
+            trigger:'#header',
+            // id:'lose',
+            // markers:true,
+            end:'+=300 center',
+            scrub:true,
+            
+                        
+            
+        }
+              
+          
+         
+        });
+    },
+    "(max-width: 800px)": function()  {
+
+
+        const tween = gsap.to("li", {
+          backgroundImage:
+            "linear-gradient(90deg, var(--left) 0%, var(--left) 100%, var(--right) 100%)",
+          duration: .4,
+          ease: "back.in",
+          stagger: {
+            each: 0.1,
+            ease: "power2.out"
+          },
+           
+               
+        scrollTrigger:{
+            start:"top center",
+            trigger:'#header',
+            // id:'lose',
+            // markers:true,
+            end:'+=220',
+            scrub:true,
+            //   markers:true,
+            //   id:'hell'
+                        
+            
+        }
+              
+          
+         
+        });
+    }
+
+})
 
 
 
@@ -196,9 +240,20 @@ const reviews = reactive([
 
          
         &-header {
-             color: $color-primary-purple;
-             font-size:var(--font-size-fluid-3);
-             margin-bottom: var(--size-fluid-5);
+              background: linear-gradient(
+                400deg,
+                $color-primary-dark-green,
+                $color-primary-light-green 50%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            // margin: 0 auto;
+            // white-space: nowrap;
+            // margin-block-start: var(--size-fluid-7);
+            font-size: var(--font-size-fluid-3);
+            max-inline-size: var(--size-header-2);
+             margin-block-end: var(--size-fluid-5);
         }
         &_cause {
             line-height: 2.5;
@@ -211,7 +266,7 @@ const reviews = reactive([
 
             & li {
                 width: fit-content;
-                font-size: var(--font-size-6);
+                font-size: var(--font-size-5);
                 font-weight: 600;
                 --right: rgb(75, 153, 130);
                 --left: #36454f;
@@ -225,7 +280,7 @@ const reviews = reactive([
                -webkit-text-fill-color: transparent;
 
                
-               @include respond(phone) {
+               @include respond(tab-port) {
                    font-size: var(--font-size-fluid-1);
                }
                     
@@ -238,6 +293,7 @@ const reviews = reactive([
         grid-auto-flow: row;
         grid-template-columns: repeat(2,1fr);
         border-radius: 5px;
+        width: 100%;
         gap: var(--size-fluid-3) var(--size-fluid-4);
        
 
@@ -250,6 +306,9 @@ const reviews = reactive([
             grid-template-rows: repeat(1fr 4fr);
             background: white;
              padding-block: var(--size-fluid-2);
+             padding-inline: var(--size-fluid-2);
+              box-shadow: var(--shadow-2);
+
 
             &-header {
                 display: grid;

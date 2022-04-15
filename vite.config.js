@@ -1,8 +1,11 @@
-import { defineConfig } from "vite";
+import { defineConfig, compilerOptions } from "vite";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
+  compilerOptions: {
+    // isCustomElement: (tag) => tag.excludes('-')
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -25,6 +28,7 @@ export default defineConfig({
         $color-primary-dark-green: rgb(0, 255, 26);
         $color-primary-purple:#39395f;
         $color-primary-white:#f5eec2;
+        $color-primary-red:rgb(255, 51, 51);;
         $color-yellow:#ff9900;
         $color-blue:#3d5a10;
         $color-black:#36454f;

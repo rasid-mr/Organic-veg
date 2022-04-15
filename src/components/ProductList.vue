@@ -1,11 +1,11 @@
 <template>
   <div class="diet">
     <!-- <h2 class="diet-header header">Special Offer</h2> -->
-    <div class="media-scroller snaps-inline">
+    <div class="media-scroller snaps-inline" >
       <template v-for="(head, index) in header" :key="head.name">
         <li v-if="index < 19 && head.type == productType">
           <div class="media_element">
-            <img :src="head.img" class="media_element-img" alt="" />
+            <img :src="head.img" class="media_element-img" id="img" alt="" />
             <h4 class="media_element-title">
               {{ head.name }}<span> ${{ head.price }}</span>
             </h4>
@@ -55,8 +55,10 @@
               >
                 Add to Cart
               </button>
+              <router-link to="cart">
 
-              <button class="buy" @click="one">Cart page</button>
+              <button class="cart-page" @click="one">Cart page</button>
+              </router-link>
 
               <!-- <button :data-index="index" @click="incrementLike">increment</button> -->
             </div>
@@ -68,13 +70,14 @@
   <div class="fruit">
 
   </div>
+  <!-- <button @click="gocart">cart </button> -->
 </template>
 
 <script setup>
-import { onMounted, computed, ref, reactive, defineProps } from "vue";
+import { onMounted, computed, ref, reactive} from "vue";
 import gsap from "gsap";
 import { useRouter } from "vue-router";
-import { querySnapshot, artich } from "../firebase.js";
+// import { querySnapshot } from "../firebase.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getFirestore,
@@ -107,13 +110,19 @@ let productType = computed(() => props.type)
 onMounted(async () => {
   // console.log(props.type)
   const user = await auth.currentUser;
-  if (user) {
-    const uid = await user.uid;
-    const users = await doc(db, "users", uid);
-    const infoUser = await getDoc(users);
-    let buttonChange = await infoUser.data().maxCart;
+  onAuthStateChanged(auth, (user) => {
+  // if(user) {
+    
+  // }
+  if(user) {
+    const uid =  user.uid;
+    const users =  doc(db, "users", uid);
+    const infoUser =  getDoc(users);
+    // let buttonChange =  infoUser.data().maxCart;
     // console.log(buttonChange)
     // console.log(buttonChange)
+    infoUser.then(da => {
+      const buttonChange = da.data().maxCart
     const carts = document.querySelectorAll(".cart");
     for (let [key, name] of Object.entries(buttonChange)) {
       console.log(key, name)
@@ -123,18 +132,25 @@ onMounted(async () => {
         }
       });
     }
-  } else {
-   return 'something is wrong'
-   
+    })
+  }else {
+    console.log('couldnt parse the data.')
   }
+  })
+ 
 });
 // ////////////
 // cart function
 let index = ref();
+let image = ref()
 let buttonCart = ref();
 const cart = async (e) => {
   // router.push('/login')
   index = e.target.dataset.index;
+   image = e.target.parentElement.parentElement.firstElementChild
+    
+     let img =  image.getAttribute('src')
+    
   let itemName = await header[index].name;
   // let allCart = itemName;
 
@@ -157,6 +173,8 @@ const cart = async (e) => {
             cart: true,
             amount: 700,
             index: Number(index),
+            name:itemName,
+            img:img
           },
         },
       },
@@ -174,6 +192,9 @@ const cart = async (e) => {
   }
 };
 
+/////////////////
+// go to cart
+const gocart = (() => {router.push('/cart')})
 // /////////////
 // incrementing  likes
 let likes = ref();
@@ -190,9 +211,9 @@ const incrementLike = async (e) => {
   const bjSnap = await getDoc(bjRef);
   // console.log(bjSnap.data())
 
-  const user = await auth.currentUser;
-  const uid = await user.uid;
-  const userRef = await doc(db, "users", uid);
+  // const user = await auth.currentUser;
+  // const uid = await user.uid;
+  // const userRef = await doc(db, "users", uid);
   let targetElement = e.target.firstElementChild.firstChild
   const svgtl = gsap.timeline();
 
@@ -216,8 +237,8 @@ const incrementLike = async (e) => {
     });
   } else {
     e.target.classList.remove("active");
-    const user = await auth.currentUser;
-    const uid = await user.uid;
+    // const user = await auth.currentUser;
+    // const uid = await user.uid;
 
     await updateDoc(bjRef, {
       likes: increment(-1),
@@ -237,7 +258,7 @@ const incrementLike = async (e) => {
 
 // ///////////////////
 // getting data from firebase
-
+const querySnapshot = await getDocs(collection(db, "vegetable"));
 const header = [];
 querySnapshot.forEach((doc) => {
   header.push(doc.data());
@@ -267,7 +288,7 @@ buttonCart
 
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  @include scrollbars(0.6em, rgb(82, 82, 82), #212529);
+  @include scrollbars(0.6em, rgb(60, 60, 60), #bbbbbb);
 }
 
 .snaps-inline {
@@ -300,6 +321,7 @@ buttonCart
   }
 
   & > img {
+    display: block;
     inline-size: 100%;
     aspect-ratio: 14 / 9;
     object-fit: cover;
@@ -344,6 +366,57 @@ buttonCart
     }
   }
 }
+ 
+    .cart-page {
+      background-image: linear-gradient(315deg, rgb(89, 76, 174) 0%, rgb(82, 196, 78) 75%);
+    }
+    .cart {
+      background-image: linear-gradient(315deg, $color-primary-dark-green 0%, $color-primary-light-green 75%);
+      width: fit-content;
+    }
+  .cart,.cart-page {
+    // min-width: var(--size-fluid-8);
+  width: var(--size-fluid-7);
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background-size: 120% auto;
+  // background-image: linear-gradient(315deg, #bdc3c7 0%, #2c3e50 75%);
+  
+  @include respond(tab-land) {
+    width: var(--size-fluid-8);
+  }
+
+&:hover {
+  background-position: right center;
+}
+&:active {
+  top: 2px;
+}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .st3 {
   fill: #99ff66;
   opacity: 0;
@@ -353,5 +426,10 @@ buttonCart
   stroke:  rgb(0, 255, 26);
   stroke-width: 4;
   stroke-miterlimit: 10;
+}
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 </style>

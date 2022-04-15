@@ -1,20 +1,20 @@
 <template>
-  <div class="pot">
-    <h1 class="page-header">Eat clean & Organic</h1>
+  <div class="pot" >
+    <h1 name="products" id="products" class="page-header">Most Iconic Products</h1>
     <div class="hot">
       <h2
-        style="--header: 400deg, rgb(255, 82, 82), rgb(255, 255, 96)"
+        style="--header: 400deg,#f56f90, #ff6347 80%"
         class="hot-header header"
       >
-        Trending Products
+        Delicious Furits
       </h2>
 
-    <!-- <product-list type='fruit'></product-list> -->
+    <product-list type='fruit'></product-list>
     </div>
 
     <div class="cool">
-      <h2 style="--header: 315deg, #2a2a72 0%, #009ffd 74%;"
-       class="cool-header header" >Most Selling Products</h2>
+      <h2 style="--header: 315deg, #f56f90, #ff6347 80%"
+       class="cool-header header" >Fresh Vegetable</h2>
        <product-list type='vegetable'></product-list>
     </div>
 
@@ -38,9 +38,9 @@ import ProductList from './ProductList.vue'
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0 auto;
-  white-space: nowrap;
-  margin-top: var(--size-fluid-9);
+  // margin: 0 auto;
+  // white-space: nowrap;
+  margin-block-start: var(--size-fluid-7);
   font-size: var(--font-size-fluid-3);
 
   @include respond(tab-port) {
@@ -53,7 +53,7 @@ import ProductList from './ProductList.vue'
   background-clip: text;
   color: transparent; 
   white-space: nowrap;
-  margin-block: var(--size-fluid-7) var(--size-fluid-4);
+  margin-block: var(--size-fluid-4) var(--size-fluid-4);
   font-size: var(--font-size-fluid-2);
 }
 
