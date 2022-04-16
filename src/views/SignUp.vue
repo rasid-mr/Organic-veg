@@ -30,7 +30,7 @@ import {
   doc,
   collection
 } from "firebase/firestore";
-// import { querySnapshot } from "../firebase.js";
+import { header } from "../firebase.js";
 const router = useRouter();
 const auth = getAuth();
 const db = getFirestore();
@@ -116,15 +116,15 @@ const signupGoogle = () => {
     });
 
 }
-const querySnapshot = await getDocs(collection(db, "vegetable"));
+// const querySnapshot = await getDocs(collection(db, "vegetable"));
 
-const header = [];
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  // console.log(doc.id, " => ", doc.data());
+// const header = [];
+// querySnapshot.forEach((doc) => {
+//   // doc.data() is never undefined for query doc snapshots
+//   // console.log(doc.id, " => ", doc.data());
 
-  header.push(doc.data());
-});
+//   header.push(doc.data());
+// });
 </script>
 
 <style lang="scss" scoped>

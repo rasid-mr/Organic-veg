@@ -8,6 +8,10 @@
      
         <input type="password" placeholder="Password" v-model="password" />
      <button @click="register">Submit</button>
+      <p class="or">Or, didn't signup yet!</p>
+     <button>
+       <router-link to="/signup">Signup</router-link>
+     </button>
 
      <!-- {{userActive}}
       <p v-if="userActive">i am logged in</p> -->
@@ -180,5 +184,26 @@ signInWithEmailAndPassword(auth, email.value, password.value)
    background-image: linear-gradient(315deg, $color-primary-red  0%, $color-black 75%);
 
 }
- 
+.or {
+  margin-block: var(--size-fluid-2) var(--size-fluid-2);
+  color: $color-black;
+  position: relative;
+
+   &::after {
+    content:'';
+    position: absolute;
+    width: 100%;
+    top: 120%;
+    left: 0;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 2px;
+
+
+  }
+
+}
+a, a:visited {
+  text-decoration: none;
+  color: $color-primary-white;
+} 
 </style>

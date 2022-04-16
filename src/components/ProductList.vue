@@ -77,7 +77,7 @@
 import { onMounted, computed, ref, reactive} from "vue";
 import gsap from "gsap";
 import { useRouter } from "vue-router";
-// import { querySnapshot } from "../firebase.js";
+import { querySnapshot, querySnapshot2, header } from "../firebase.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getFirestore,
@@ -102,13 +102,26 @@ const props = defineProps({
   type:String
 })
 
-let productType = computed(() => props.type) 
+let productType = computed(() => props.type) ;
+  // const querySnapshot = await getDocs(collection(db, "vegetable"));
+
 
 /////////////////
 // showing initial likes in the page
 
 onMounted(async () => {
-  // console.log(props.type)
+  //////////
+  // querySnapshot
+   
+ 
+// const data = querySnapshot().forEach((doc) => {
+//   header.push(doc.data());
+// });
+
+// await querySnapshot.forEach((doc) => {
+//   header.push(doc.data());
+// });
+  
   const user = await auth.currentUser;
   onAuthStateChanged(auth, (user) => {
   // if(user) {
@@ -125,7 +138,7 @@ onMounted(async () => {
       const buttonChange = da.data().maxCart
     const carts = document.querySelectorAll(".cart");
     for (let [key, name] of Object.entries(buttonChange)) {
-      console.log(key, name)
+      // console.log(key, name)
       document.querySelectorAll(".cart").forEach((el) => {
         if (name.index == el.dataset.index) {
           el.textContent = "Item added";
@@ -258,20 +271,21 @@ const incrementLike = async (e) => {
 
 // ///////////////////
 // getting data from firebase
-const querySnapshot = await getDocs(collection(db, "vegetable"));
-const header = [];
-querySnapshot.forEach((doc) => {
-  header.push(doc.data());
-});
+//  let header = [];
+// querySnapshot.then((res) => {
+//   header.push(res)
+// })
+// console.log(header)
+//  const header = [];
+ 
+// const data = querySnapshot2.forEach((doc) => {
+//   header.push(doc.data());
+// });
 
-artich.forEach((el) => {
-  console.log(el.data());
-});
+// console.log(header.value, mist.value)
 
 defineExpose({
-//   name,
-//   header,
-//   likes,
+ 
 buttonCart
 });
 </script>

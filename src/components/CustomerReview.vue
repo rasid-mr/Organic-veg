@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
- import {reactive, onMounted} from 'vue'
+ import {reactive, onMounted, onUnmounted} from 'vue'
  import { faker } from '@faker-js/faker';
  import {gsap} from 'gsap'
  import {ScrollTrigger} from 'gsap/ScrollTrigger'
@@ -128,10 +128,20 @@ ScrollTrigger.batch(".review_customer_card", {
 
 ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".review_customer_card", {y: 0}));
 
-
+ScrollTrigger.getAll().forEach((element) => {
+      element.enable();
+      element.refresh();
+      // console.log(element.vars);
+    });
 
 })
 
+onUnmounted(() => {
+   ScrollTrigger.getAll().forEach((element) => {
+      element.kill();
+      // console.log({ element });
+    });
+})
 
 
 const reviews = reactive([

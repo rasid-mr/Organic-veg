@@ -377,6 +377,7 @@ export default {
   width: 100%;
   height: 100vh;
   height: -webkit-fill-available;
+  min-height: 600px;
 }
 
 .swiper-slide {

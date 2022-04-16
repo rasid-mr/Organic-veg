@@ -1,6 +1,7 @@
+import { async } from "@firebase/util";
 import {initializeApp} from "firebase/app";
-import {getFirestore, doc, setDoc, collection, getDoc, getDocs, updateDoc } from "firebase/firestore";
-import {onMounted} from 'vue'
+import {getFirestore,  collection, getDocs } from "firebase/firestore";
+import {ref, toRefs} from 'vue'
 
 
 
@@ -30,9 +31,33 @@ const db =  getFirestore()
 
 
 
+// let querySnapshot
 
+// onMounted(async () => {
  
-
-
+// })
+// const querySnapshot = await getDocs(collection(db, "vegetable"));
+export {
+  
+  querySnapshot,
+  querySnapshot2,
+  header
+  
+}
+ const querySnapshot2 = async function() {
+  const data =   await getDocs(collection(db, "vegetable"))
+  
+   const header2 = [];
+   await data.forEach((doc) => {
+     header2.push(doc.data())
+   })
+   return header2
+   
+ }
+ 
+ const querySnapshot = querySnapshot2()
+ const data = ref();
+ const header = await querySnapshot2().then((res) => data.value = res)
+// const mist =ref('love')
 
 // const userRef = await getDoc(doc(db, uid))

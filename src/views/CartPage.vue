@@ -2,8 +2,11 @@
   <div class="pot">
     <TheHeader />
     <div class="cart">
-      <header class="cart_head">
+      <header class="cart_head" v-if="cartChecker">
         <h1 class="cart_head-primary">You have carted these items.</h1>
+      </header>
+      <header class="cart_head" v-else>
+        <h1 class="cart_head-primary">You didn't cart any item</h1>
       </header>
 
       <div class="cart_card">
@@ -18,10 +21,13 @@
           </template>
         </template>
         <div class="noCart" v-if="!cartChecker">
-           <p class="noCart-text">You didn't cart any item</p>
+           
            <the-link>
 
            <router-link class="noCart-link" to="/">Go Back to Home</router-link>
+           </the-link>
+           <the-link>
+             <router-link class="noCart-link" to='/login'>Login</router-link>
            </the-link>
         </div>
       </div>
@@ -51,9 +57,9 @@ onMounted(async () => {
       //   console.log(element)
       // });
       infoUser.then((da) => {
-        const buttonChange = da.data().maxCart;
-        arrayCart.value = buttonChange;
-        console.log(arrayCart);
+        const maxCart = da.data().maxCart;
+        arrayCart.value = maxCart;
+        // console.log(maxCart);
         cartChecker.value = computed(() => arrayCart.value);
       });
       //  let buttonChange =  infoUser.data();
@@ -69,7 +75,7 @@ onMounted(async () => {
 });
 
 // console.log(arrayCart.value)
-defineExpose({});
+ 
 </script>
 
 <style lang="scss" scoped>
@@ -141,12 +147,22 @@ ul {
 }
 .noCart {
   display: grid;
-
+  grid-auto-flow: column;
+  width: 80%;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 300px) );
+  gap: var(--size-fluid-3);
+  
    & a, a:visited {
-      color: $color-primary-purple;
+      color: $color-primary-cyan;
       text-decoration: none;
       font-size: var(--font-size-fluid-1);
+      margin-block: var(--size-fluid-2) var(--size-fluid-1);
+
+      &:hover {
+        color: $color-primary-light-green;
+      }
    }
+   
    &-text {
      color: $color-primary-red;
      font-size: var(--font-size-fluid-1);
