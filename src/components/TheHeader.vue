@@ -57,6 +57,7 @@
               
               >About Me</router-link
             >
+             <button v-if="logoutChecker" class="logout" @click="logout" > Log out</button>
             <!-- <button @click="show">dot</button> -->
           </ul>
         </nav>
@@ -69,14 +70,41 @@
  
 </script>
 <script setup>
- import {onMounted, defineEmits} from 'vue';
- const emit = defineEmits(['hideBy'])
- function show() {
-   console.log('show')
- }
-   function hideNav() {
+ import {onMounted, ref} from 'vue';
+ import {getAuth, signOut, onAuthStateChanged} from 'firebase/auth';
+ import {useRouter} from 'vue-router';
+const auth = getAuth();
+const router = useRouter();
+const logoutChecker = ref(false)
+
+
+onAuthStateChanged(auth, (user) => {
+  if(user) {
+    logoutChecker.value = true
+  }
+  else{
+    logoutChecker.value = false
+  }
+})
+
+
+ const logout = () => {
+  signOut(auth).then(() => {
+      // Sign-out successful.
+     
+      router.push('/')
+    }).catch((error) => {
+      // An error happened.
+      
+    })
+  }
+   const hideNav = () =>  {
       const primary = document.querySelector(".primary-navigation");
+    
+      const navToggle = document.querySelector(".mobile-nav-toggle");
       primary.classList.add("hide-nav");
+      primary.setAttribute("data-visible", false);
+      navToggle.setAttribute("aria-expanded", false);
     };
   
   onMounted(() => {
@@ -168,7 +196,7 @@
     background: transparent;
   }
 
-  & > * {
+  & > *:not(:last-child) {
     flex-basis: var(--size-fluid-5);
   }
 }
@@ -243,11 +271,24 @@
   padding-right: 0;
   margin-right: 0;
 }
+.logout {
+  background-color: $color-primary-red;
+  font-size: var(--font-size-fluid-1);
+  font-weight: 600;
+  width: var(--size-fluid-7);
+  flex-basis: var(--size-fluid-4);
+  border-radius: 5px;
+  position:relative;
+  cursor: pointer;
+  // display: inline-block;
 
-.router-link-exact-active {
-  //   text-decoration: underline #ffe186 2px ;
-  //   text-underline-offset: 5px;
+  &:active {
+     
+    top: 2px;
+    left: 0;
+  }
 }
+ 
 .header_logo {
   display: block;
   text-decoration: none;

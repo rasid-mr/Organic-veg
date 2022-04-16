@@ -77,7 +77,7 @@
 import { onMounted, computed, ref, reactive} from "vue";
 import gsap from "gsap";
 import { useRouter } from "vue-router";
-import { querySnapshot, querySnapshot2, header } from "../firebase.js";
+import { querySnapshot2 } from "../firebase.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getFirestore,
@@ -102,26 +102,18 @@ const props = defineProps({
   type:String
 })
 
-let productType = computed(() => props.type) ;
+let productType = computed(() => props.type);
+ 
   // const querySnapshot = await getDocs(collection(db, "vegetable"));
 
 
 /////////////////
 // showing initial likes in the page
-
+ const header = ref();
 onMounted(async () => {
   //////////
-  // querySnapshot
-   
- 
-// const data = querySnapshot().forEach((doc) => {
-//   header.push(doc.data());
-// });
-
-// await querySnapshot.forEach((doc) => {
-//   header.push(doc.data());
-// });
-  
+    await querySnapshot2().then((res) => header.value = res)
+  console.log(header.value)
   const user = await auth.currentUser;
   onAuthStateChanged(auth, (user) => {
   // if(user) {
@@ -135,16 +127,19 @@ onMounted(async () => {
     // console.log(buttonChange)
     // console.log(buttonChange)
     infoUser.then(da => {
-      const buttonChange = da.data().maxCart
-    const carts = document.querySelectorAll(".cart");
-    for (let [key, name] of Object.entries(buttonChange)) {
-      // console.log(key, name)
-      document.querySelectorAll(".cart").forEach((el) => {
-        if (name.index == el.dataset.index) {
-          el.textContent = "Item added";
-        }
-      });
-    }
+      if(da.data().maxCart) {
+
+            const buttonChange = da.data().maxCart
+          const carts = document.querySelectorAll(".cart");
+          for (let [key, name] of Object.entries(buttonChange)) {
+            // console.log(key, name)
+            document.querySelectorAll(".cart").forEach((el) => {
+              if (name.index == el.dataset.index) {
+                el.textContent = "Item added";
+              }
+            });
+          }
+      }else return
     })
   }else {
     console.log('couldnt parse the data.')
@@ -164,7 +159,7 @@ const cart = async (e) => {
     
      let img =  image.getAttribute('src')
     
-  let itemName = await header[index].name;
+  let itemName = await header.value[index].name;
   // let allCart = itemName;
 
   const user = auth.currentUser;
@@ -218,7 +213,7 @@ const incrementLike = async (e) => {
    
   index = e.target.dataset.index;
   console.log(index);
-  let itemName = await header[index].name;
+  let itemName = await header.value[index].name;
   console.log(itemName);
   const bjRef = doc(db, "vegetable", itemName);
   const bjSnap = await getDoc(bjRef);
@@ -271,18 +266,7 @@ const incrementLike = async (e) => {
 
 // ///////////////////
 // getting data from firebase
-//  let header = [];
-// querySnapshot.then((res) => {
-//   header.push(res)
-// })
-// console.log(header)
-//  const header = [];
  
-// const data = querySnapshot2.forEach((doc) => {
-//   header.push(doc.data());
-// });
-
-// console.log(header.value, mist.value)
 
 defineExpose({
  

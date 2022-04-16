@@ -1,6 +1,7 @@
 <template>
   <div class="pot">
     <TheHeader />
+   
     <div class="cart">
       <header class="cart_head" v-if="cartChecker">
         <h1 class="cart_head-primary">You have carted these items.</h1>
@@ -35,7 +36,7 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref, computed } from "@vue/runtime-core";
+import { onMounted, ref, computed,defineExpose } from "@vue/runtime-core";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import TheLink from '../slots/TheLink.vue';
@@ -59,8 +60,9 @@ onMounted(async () => {
       infoUser.then((da) => {
         const maxCart = da.data().maxCart;
         arrayCart.value = maxCart;
-        // console.log(maxCart);
-        cartChecker.value = computed(() => arrayCart.value);
+        console.log(arrayCart.value);
+        cartChecker.value = arrayCart.value
+       
       });
       //  let buttonChange =  infoUser.data();
       // console.log(await buttonChange)
@@ -73,6 +75,8 @@ onMounted(async () => {
     }
   });
 });
+
+ 
 
 // console.log(arrayCart.value)
  

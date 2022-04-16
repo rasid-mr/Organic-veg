@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted} from "vue";
 import { useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import TheHeader from '../components/TheHeader.vue'
@@ -30,14 +30,19 @@ import {
   doc,
   collection
 } from "firebase/firestore";
-import { header } from "../firebase.js";
+import { querySnapshot2 } from "../firebase.js";
 const router = useRouter();
 const auth = getAuth();
 const db = getFirestore();
 const email = ref("");
 const password = ref("");
-const errMsg = ref()
-
+const errMsg = ref();
+const header = ref();
+onMounted(async () => {
+   await querySnapshot2().then((res) => header.value = res);
+   console.log(header.value)
+})
+ 
 const register = async () => {
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
@@ -52,7 +57,7 @@ const register = async () => {
       //  const allName = []
       //  console.log(allName)
       let allObjName = [];
-      header.forEach((element) => {
+      header.value.forEach((element) => {
         //  allName.push(element.name)
         const allName = false;
 
