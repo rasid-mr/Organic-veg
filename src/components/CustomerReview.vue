@@ -20,30 +20,41 @@
           key="review.name"
           v-for="review in reviews"
         >
-           
+        <Suspense >
+      <template #default>
+             
             <div class="review_customer_card-header">
               <div>
                 <img  :src="review.img" alt="" />
-              </div>
-              <div>
-                <h4>{{ review.name }}</h4>
-                <p>livein: {{ review.from }}</p>
-              </div>
+           </div>
+           <div>
+             <h4>{{ review.name }}</h4>
+             <p>livein: {{ review.from }}</p>
+           </div>
 
-            </div>
-              <p class="review_customer_card-info">{{ review.review }}</p>
+           <p class="review_customer_card-info">{{ review.review }}</p>
+         </div>
+       </template>
         
+          <template #fallback>
+            <p>loading</p>
+          </template>
+
+            
+        </Suspense>
         </div>
       </div>
     </div>
   </div>
+  <!-- <p>{{reviewss}}</p> -->
 </template>
 
 <script setup>
-import { reactive, onMounted, onUnmounted } from "vue";
+import { reactive, onMounted, onUnmounted, ref } from "vue";
 import { faker } from "@faker-js/faker";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Result } from "postcss";
 gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
@@ -96,7 +107,7 @@ onMounted(() => {
   });
 
   gsap.defaults({ ease: "none" });
-  gsap.set(".review_customer_card", {opacity:0, y:-50 });
+  gsap.set(".review_customer_card", {opacity:0, y:-150 });
 //  ScrollTrigger.scrollProxy('#scrollContainer')
   ScrollTrigger.batch(".review_customer_card", {
     
@@ -105,7 +116,7 @@ onMounted(() => {
       gsap.to(batch, {
         opacity: 1,
         y:0,
-        stagger: {each: 0.15, grid: [1, 2]},
+        stagger: .15,
         overwrite: true
       }),
      
@@ -130,103 +141,122 @@ onUnmounted(() => {
     // console.log({ element });
   });
 });
+const reviews = ref()
+// let review = reactive([])
+const data = new Promise((resolve, reject) => {
+  setTimeout(() => {
 
-const reviews = reactive([
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-  },
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-  },
+    reviews.value = [
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
+     },
+   ];
+  }, 3000)
+  if(reviews.value) {
+    resolve('sucess')
+  }else{ reject('error') }
+  // return res
+})
+ 
+// const rev = ref([]);
+// const da = async function() {
+//   console.log(await faker.name.findName())
+//   return await faker.name.findName()
+// }
+// rev.value =await da();
+// console.log(rev.value)
 
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-
-  {
-    name: faker.name.findName(),
-    from: faker.address.city(),
-    img: faker.image.avatar(),
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-  },
-]);
 </script>
 
 <style lang="scss" scoped>

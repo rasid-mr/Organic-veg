@@ -7,10 +7,7 @@
    
 </template>
 
-<script setup>
  
- 
-</script>
 
 <style>
 body {
