@@ -120,15 +120,32 @@
         </text>
       </svg>
       <swiper-slide>
-        <img src="../assets/mixed-vegetable-1.jpg" alt="" />
+        <img  alt="mixed vegatable" srcset="../assets/mixed-vegetable-mobile.jpg 600w,
+                            ../assets/mixed-vegetable-tab.jpg 1000w,
+                            ../assets/mixed-vegetable.jpg 1900w "
+
+        sizes="(max-width:56.25em) 100vw, (max-width: 37.5em) 100w, 100vw"
+        src="../assets/mixed-vegetable.jpg">
+        <!-- <img src="../assets/mixed-vegetable-1.jpg" alt="" /> -->
       </swiper-slide>
       
-      <swiper-slide
-        ><img src="../assets/strwberry(1).jpg" alt=""
-      /></swiper-slide>
-      <swiper-slide
-        ><img src="../assets/fruit-chocolete.jpg" alt=""
-      /></swiper-slide>
+      <swiper-slide>
+         <img alt="strawberry" srcset="../assets/strwberry-mobile.jpg 600w,
+                                       ../assets/strwberry-tab.jpg 1000w,
+                                       ../assets/strwberry.jpg 1900w "
+            sizes="(max-width:56.25em) 100vw, (max-width: 37.5em) 100w, 100vw"
+            src="../assets/strwberry.jpg"                                         
+            >
+        </swiper-slide>
+      <swiper-slide>
+        <!-- <img src="../assets/fruit-chocolete.jpg" alt="" /> -->
+        <img src="../assets/fruit-chocolete.jpg" alt="fruit and chocolete recipe"
+         srcset="../assets/fruit-chocolete-mobile.jpg 600w,
+                 ../assets/fruit-chocolete-tab.jpg 1000w,
+                 ../assets/fruit-chocolete.jpg 1900w"
+          sizes="100w"
+                 >
+        </swiper-slide>
     </swiper>
 
     <!-- down arrow -->
@@ -256,6 +273,9 @@ export default {
 .container {
   display: grid;
   min-height: 100vh;
+  min-height:-webkit-fill-available;
+  height: 100vh;
+  
   max-width: 100vw;
   position: relative;
 

@@ -81,13 +81,14 @@ onMounted(() => {
   gladAni.fromTo(
     ".glad_illustration-pyramid",
     { autoAlpha: 0, x: -200 },
-    { autoAlpha: 1, x: 0, duration: .8 },
+    { autoAlpha: 1, x: 0, duration: .8,   },
+
   )
   
   
-    gladAni.fromTo('.roman', 
-    {x: -50, opacity:0},
-    {x:0 , opacity:1, duration:.8}, "-=.2"
+    gladAni.fromTo(".roman", 
+    {xPercent: -15, opacity:0},
+    {xPercent:0 , opacity:1, duration:0.4,  }
     )
 
   gladAni.to("#maskerH", {
@@ -113,9 +114,10 @@ onMounted(() => {
     animation: gladAni,
     trigger: ".glad",
     start: "top center",
+    once:true,
     // markers: true,
     // id: "Change between slides",
-    toggleActions: "play pause resume reset",
+    // toggleActions: "play pause paly play",
   });
 
   ScrollTrigger.getAll().forEach((element) => {
@@ -123,6 +125,14 @@ onMounted(() => {
       element.refresh();
       // console.log(element.vars);
     })
+
+    setTimeout(() => {
+      ScrollTrigger.getAll().forEach((element) => {
+        element.enable();
+        element.refresh();
+        
+      })
+    }, 10)
 });
 
 onUnmounted(() => {

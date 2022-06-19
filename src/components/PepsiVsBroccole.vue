@@ -133,11 +133,13 @@ ScrollTrigger.matchMedia({
     ScrollTrigger.create({
       trigger:'.vs_broccole', 
       start:"top bottom",
-      onEnter: () => {
+      onEnter: (progress) => {
         animation.add(sceneBroccole())
                 .add(sceneCardBroccole())
+                
       },
-      toggleActions:"play pause reset none"
+      // toggleActions:"play pause re complete",
+      once:true,
 
     })
     ScrollTrigger.create({
@@ -149,7 +151,8 @@ ScrollTrigger.matchMedia({
         animation.add(scenePepsi())
                  .add(sceneCardPepsi())
       },
-      toggleActions:"play pause reset none"
+      // toggleActions:"play pause reset none"
+      once:true
 
     })
 

@@ -242,7 +242,7 @@ onAuthStateChanged(auth, (user) => {
 }
 
 .hide-nav {
-  transform: translateX(0%);
+  transform: translateX(100%);
 }
 
 .router-link, .router-link:visited {
