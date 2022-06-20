@@ -74,7 +74,7 @@ gsap.registerPlugin(ScrollTrigger);
        from: faker.address.city(),
        img: faker.image.avatar(),
        review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+         "Lorem ipsum sdolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
      },
      {
        name: faker.name.findName(),
