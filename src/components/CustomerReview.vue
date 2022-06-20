@@ -51,6 +51,7 @@ import { faker } from "@faker-js/faker";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Result } from "postcss";
+ 
 gsap.registerPlugin(ScrollTrigger);
   
     const loadData =  new Promise(resolve => {
@@ -206,7 +207,18 @@ onMounted(async () => {
     },
   });
 
+const time = gsap.timeline();
+ time.from('.review_customer_card', {
+  y: -150, opacity:.2
+ });
+ ScrollTrigger.create({
+  animation:time,
+  trigger: '.review_customer_card',
+  start:'top center',
+   
+  // start:'20'
 
+ })
 
   ScrollTrigger.getAll().forEach((element) => {
     element.enable();
@@ -222,32 +234,35 @@ onUnmounted(() => {
     element.kill();
     // console.log({ element });
   });
+
+
+   
 });
 
  
  const review = ref(null)
    console.log(review)
   defineExpose({ review})
- 
- onUpdated(() => {
-      gsap.defaults({ ease: "none" });
+
+//  onUpdated(() => {
+//       gsap.defaults({ ease: "none" });
    
-  gsap.set('.review_customer_card', {opacity:0, y:-150 });
+//   gsap.set('.review_customer_card', {opacity:0, y:-150 });
  
-console.log('shit')
-  ScrollTrigger.batch('.review_customer_card', {
+// console.log('shit')
+//   ScrollTrigger.batch('.review_customer_card', {
     
-   onEnter: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: .15, overwrite: true}),
+//    onEnter: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: .15, overwrite: true}),
   
-  onEnterBack: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: 0.15, overwrite: true}),
+//   onEnterBack: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: 0.15, overwrite: true}),
   
      
-  });
+//   });
 
-  ScrollTrigger.addEventListener("refreshInit", () =>
-    gsap.set('.review_customer_card', { y: 0  })
-  );
- })
+//   ScrollTrigger.addEventListener("refreshInit", () =>
+//     gsap.set('.review_customer_card', { y: 0  })
+//   );
+//  })
 
 </script>
 
