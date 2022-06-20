@@ -10,7 +10,7 @@
           <li>We don't use preservative.</li>
           <li>We delivary product daily basis.</li>
           <li>So, No stale vegetable</li>
-          <li>Our goal is to keep you healthy.</li>
+          <li ref="dog">Our goal is to keep you healthy.</li>
           <li>We use world latest technology.</li>
         </ul>
       </div>
@@ -19,12 +19,13 @@
           class="review_customer_card"
           key="review.name"
           v-for="review in reviews"
+          ref="reviewdad"
         >
-        <Suspense >
-      <template #default>
+        <!-- <Suspense > -->
+      <!-- <template #default> -->
              
-            <div class="review_customer_card-header">
-              <div>
+        <div  class="review_customer_card-header">
+           <div>
                 <img  :src="review.img" alt="" />
            </div>
            <div>
@@ -32,32 +33,131 @@
              <p>livein: {{ review.from }}</p>
            </div>
 
+            </div>
            <p class="review_customer_card-info">{{ review.review }}</p>
-         </div>
-       </template>
         
-          <template #fallback>
-            <p>loading</p>
-          </template>
-
-            
-        </Suspense>
         </div>
       </div>
     </div>
   </div>
-  <!-- <p>{{reviewss}}</p> -->
+   
+ <!-- <p>{{reviewData}}</p> -->
+   
 </template>
 
 <script setup>
-import { reactive, onMounted, onUnmounted, ref } from "vue";
+import {  reactive, onMounted, onUnmounted, ref, toRefs, onUpdated } from "vue";
 import { faker } from "@faker-js/faker";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Result } from "postcss";
 gsap.registerPlugin(ScrollTrigger);
+  
+    const loadData =  new Promise(resolve => {
+      resolve([
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+         {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+     {
+       name: faker.name.findName(),
+       from: faker.address.city(),
+       img: faker.image.avatar(),
+       review:
+         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
+     },
+      ])
+    })
+ 
+const reviews = ref(null);
+onMounted(async () => {
 
-onMounted(() => {
+ 
+ 
+ loadData.then((result) => {
+  
+  reviews.value = result
+
+
+  
+
+ })
+
+ 
+
   ScrollTrigger.matchMedia({
     "(min-width: 799px)": function () {
       const tween = gsap.to("li", {
@@ -106,25 +206,7 @@ onMounted(() => {
     },
   });
 
-  gsap.defaults({ ease: "none" });
-  gsap.set(".review_customer_card", {opacity:0, y:-150 });
-//  ScrollTrigger.scrollProxy('#scrollContainer')
-  ScrollTrigger.batch(".review_customer_card", {
-    
-    onEnter: (batch) =>
-    
-      gsap.to(batch, {
-        opacity: 1,
-        y:0,
-        stagger: .15,
-        overwrite: true
-      }),
-     
-  });
 
-  ScrollTrigger.addEventListener("refreshInit", () =>
-    gsap.set(".review_customer_card", { y: 0  })
-  );
 
   ScrollTrigger.getAll().forEach((element) => {
     element.enable();
@@ -132,7 +214,7 @@ onMounted(() => {
     // console.log(element.vars);
   });
 });
-
+ 
  
   
 onUnmounted(() => {
@@ -141,127 +223,38 @@ onUnmounted(() => {
     // console.log({ element });
   });
 });
-const reviews = ref()
-// let review = reactive([])
-const data = new Promise((resolve, reject) => {
-  setTimeout(() => {
 
-    reviews.value = [
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-     },
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   
-     {
-       name: faker.name.findName(),
-       from: faker.address.city(),
-       img: faker.image.avatar(),
-       review:
-         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat? Lorem ipsum dolor sit.",
-     },
-   ];
-  }, 3000)
-  if(reviews.value) {
-    resolve('sucess')
-  }else{ reject('error') }
-  // return res
-})
  
-// const rev = ref([]);
-// const da = async function() {
-//   console.log(await faker.name.findName())
-//   return await faker.name.findName()
-// }
-// rev.value =await da();
-// console.log(rev.value)
+ const review = ref(null)
+   console.log(review)
+  defineExpose({ review})
+ 
+ onUpdated(() => {
+      gsap.defaults({ ease: "none" });
+   
+  gsap.set('.review_customer_card', {opacity:0, y:-150 });
+ 
+console.log('shit')
+  ScrollTrigger.batch('.review_customer_card', {
+    
+   onEnter: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: .15, overwrite: true}),
+  
+  onEnterBack: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: 0.15, overwrite: true}),
+  
+     
+  });
+
+  ScrollTrigger.addEventListener("refreshInit", () =>
+    gsap.set('.review_customer_card', { y: 0  })
+  );
+ })
 
 </script>
 
 <style lang="scss" scoped>
 @import "open-props/style";
 @import "open-props/normalize";
+ 
 .review {
   color: #36454f;
   display: grid;
