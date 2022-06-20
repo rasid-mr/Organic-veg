@@ -34,8 +34,8 @@
            </div>
 
             </div>
-           <p class="review_customer_card-info">{{ review.review }}</p>
         
+           <p class="review_customer_card-info">{{ review.review }}</p>
         </div>
       </div>
     </div>
