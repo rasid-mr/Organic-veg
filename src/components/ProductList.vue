@@ -52,12 +52,13 @@
                 :data-index="index"
                 @click="cart"
                 class="media_element_button-cart cart"
+                
               >
                 Add to Cart
               </button>
               <router-link to="cart">
 
-              <button class="cart-page" @click="one">Cart page</button>
+              <!-- <button class="cart-page" @click="one">Cart page</button> -->
               </router-link>
 
               <!-- <button :data-index="index" @click="incrementLike">increment</button> -->
@@ -67,15 +68,21 @@
       </template>
     </div>
   </div>
-  <div class="fruit">
+  <!-- <div class="fruit">
 
-  </div>
+  </div> -->
   <!-- <button @click="gocart">cart </button> -->
+  <div class="toast">
+    <p>You have carted {{cartCounter}} items.</p>
+    <button @click="gocart"> Cart</button>
+   
+  </div>
 </template>
 
 <script setup>
 import { onMounted, computed, ref, reactive} from "vue";
 import gsap from "gsap";
+// import toastr from '@/com';
 import { useRouter } from "vue-router";
 import { querySnapshot2 } from "../firebase.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -149,17 +156,22 @@ onMounted(async () => {
 });
 // ////////////
 // cart function
+ 
 let index = ref();
-let image = ref()
+let image = ref();
+let cartCounter = ref(0)
 let buttonCart = ref();
 const cart = async (e) => {
   // router.push('/login')
+  
   index = e.target.dataset.index;
    image = e.target.parentElement.parentElement.firstElementChild
     
      let img =  image.getAttribute('src')
     
   let itemName = await header.value[index].name;
+  
+  
   // let allCart = itemName;
 
   const user = auth.currentUser;
@@ -195,8 +207,18 @@ const cart = async (e) => {
     // const d2 = await buttonChange`.${itemName}`
     buttonCart.value = buttonChange;
     buttonCart.value ? (e.target.textContent = "Item added") : "Add to cart";
+
+    
   } else {
-    router.push("/login");
+     
+    console.log('really')
+cartCounter.value = cartCounter.value + 1;
+
+document.querySelector('.toast').style.transform = `translateX(0)`
+document.querySelector('.toast').style.opacity = `1`
+
+// toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+    // router.push("/login");
   }
 };
 
@@ -275,6 +297,36 @@ buttonCart
 </script>
 
 <style lang="scss" scoped>
+
+.toast {
+  font-size: 2rem;
+  color: #fcfcfc;
+  background: rgb(49, 214, 4);
+  border: 2px solid blanchedalmond;
+  border-radius: .2em;
+  box-shadow: 2px 2px 1px white;
+  min-width: 80%;
+  padding: 2rem 1rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  // toast operation
+  position:fixed;
+  top:80%;
+  left:70%;
+  transform: translateX(50%);
+  opacity: 0;
+  transition: 1s all ease-in-out;
+
+  & button {
+     width: 15%;
+     padding: .5rem 1rem;
+     border-radius: .2em;
+     background: rgb(60, 255, 99);
+  }
+
+}
 .media-scroller {
   --_spacer: var(--size-3);
   display: grid;

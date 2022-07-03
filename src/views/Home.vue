@@ -1,11 +1,11 @@
 <template>
   
-  <LandingPage />
+  <!-- <LandingPage /> -->
   <ProductPage />
-  <GladiatorSection />
-  <PepsiVsBroccole />
-  <customerReview />
-  <TheFooter />
+  <!-- <GladiatorSection /> -->
+  <!-- <PepsiVsBroccole /> -->
+  <!-- <customerReview /> -->
+  <!-- <TheFooter /> -->
 </template>
 
 <script setup>

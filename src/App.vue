@@ -3,13 +3,35 @@
   <GladiatorSection />
   <PepsiVsBroccole />
   <ProductPage /> -->
-  <router-view></router-view>
+<RouterView v-slot="{ Component }">
+  <template v-if="Component">
+    <Transition mode="out-in">
+      <!-- <KeepAlive> -->
+        <Suspense>
+          <!-- main content -->
+          <component :is="Component"></component>
+
+          <!-- loading state -->
+          <template #fallback>
+            <p class="load">
+
+              Loading...
+            </p>
+          </template>
+        </Suspense>
+      <!-- </KeepAlive> -->
+    </Transition>
+  </template>
+</RouterView>
    
 </template>
 
  
 
 <style>
+.load {
+  color: red;
+}
 body {
   font-family: "Poppins", sans-serif;
   font-family: "Roboto Mono", monospace;
