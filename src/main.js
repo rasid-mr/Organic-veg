@@ -13,7 +13,7 @@ const app = createApp(App)
 app.component(
 'TheHeader', TheHeader
 )
-app.config.globalProperties = {myName: 'kira'}
+// app.config.globalProperties = {myName: 'kira'}
 app.use(router)
 app.use(OpenProps)
 app.mount('#app')
