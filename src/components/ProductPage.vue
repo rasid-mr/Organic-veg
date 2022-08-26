@@ -65,20 +65,18 @@ import {gsap} from 'gsap';
 // import toastr from '@/com';
 import { useRouter } from "vue-router";
 import { querySnapshot2 } from "../firebase.js";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import {
   getFirestore,
-  updateDoc,
-  increment,
+  
   doc,
   setDoc,
-  Timestamp,
-  collection,
+ 
   getDoc,
   getDocs,
   arrayUnion,
 } from "firebase/firestore";
-import { P } from "../../dist/assets/vendor.f1e1e5e8";
+ 
 const auth = getAuth();
 
 const db = getFirestore();

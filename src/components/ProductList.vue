@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed, ref, reactive} from "vue";
+import { onMounted, computed, ref} from "vue";
 import gsap from "gsap";
 // import toastr from '@/com';
 import { useRouter } from "vue-router";
@@ -93,8 +93,7 @@ import {
   increment,
   doc,
   setDoc,
-  Timestamp,
-  collection,
+  
   getDoc,
   getDocs,
   arrayUnion,
