@@ -39,6 +39,7 @@
               class="router-link"
               tag="li"
               to="/signup"
+              v-if="!logoutChecker"
               >Signup</router-link
             >
             <router-link
@@ -46,6 +47,7 @@
               class="router-link"
               tag="li"
               to="/login"
+              v-if="!logoutChecker"
               >Login</router-link
             >
 
@@ -142,6 +144,7 @@ onAuthStateChanged(auth, (user) => {
  .primary-header {
    position: absolute;
    height: 10vh;
+  //  box-sizing: border-box;
    top: var(--size-fluid-2);
     
    z-index: 1001;
@@ -176,7 +179,7 @@ onAuthStateChanged(auth, (user) => {
 .primary-navigation {
   position: fixed;
   z-index: 1000;
-  inset: 0 0 0 40%;
+  inset: 0 0 0 70%;
   list-style: none;
   // background: red;
   padding: 2rem;
@@ -186,6 +189,13 @@ onAuthStateChanged(auth, (user) => {
 
   transform: translateX(100%);
   transition: transform 500ms ease-in-out;
+
+  @include respond(tab-port) {
+    inset: 0 0 0 40%
+  }
+  @include respond(tab-land) {
+    inset: 0 0 0 50%
+  }
 
   &::before {
     content: "";

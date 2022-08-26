@@ -7,20 +7,22 @@
         </h2>
         <ul class="review_question_cause">
           <li class="trigger">We don't use any harmful pesticide.</li>
-          <li>We don't use preservative.</li>
-          <li>We delivary product daily basis.</li>
-          <li>So, No stale vegetable</li>
-          <li ref="dog">Our goal is to keep you healthy.</li>
-          <li>We use world latest technology.</li>
+          <li class="trigger">We don't use preservative.</li>
+          <li class="trigger">We delivary product daily basis.</li>
+          <li class="trigger">So, No stale vegetable</li>
+          <li class="trigger" ref="dog">Our goal is to keep you healthy.</li>
+          <li class="trigger">We use world latest technology.</li>
         </ul>
       </div>
       <div class="review_customer" id="scrollContainer">
+      
         <div
           class="review_customer_card"
           key="review.name"
           v-for="review in reviews"
           ref="reviewdad"
         >
+ 
         <!-- <Suspense > -->
       <!-- <template #default> -->
              
@@ -36,8 +38,11 @@
             </div>
         
            <p class="review_customer_card-info">{{ review.review }}</p>
+        
         </div>
-      </div>
+        </div>
+
+     
     </div>
   </div>
    
@@ -46,7 +51,7 @@
 </template>
 
 <script setup>
-import {  reactive, onMounted, onUnmounted, ref, toRefs, onUpdated } from "vue";
+import {   onMounted, onUnmounted, ref } from "vue";
 import { faker } from "@faker-js/faker";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -54,8 +59,7 @@ import { Result } from "postcss";
  
 gsap.registerPlugin(ScrollTrigger);
   
-    const loadData =  new Promise(resolve => {
-      resolve([
+    const loadData = ref([
          {
        name: faker.name.findName(),
        from: faker.address.city(),
@@ -140,32 +144,28 @@ gsap.registerPlugin(ScrollTrigger);
        review:
          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat?Lorem ipsum dolor sit.",
      },
-      ])
-    })
+    ])
+    
  
-const reviews = ref(null);
+ const reviews = ref('')
 onMounted(async () => {
 
  
+ reviews.value =  loadData.value
+
  
- loadData.then((result) => {
   
-  reviews.value = result
-
-
-  
-
- })
 
  
 
   ScrollTrigger.matchMedia({
     "(min-width: 799px)": function () {
-      const tween = gsap.to("li", {
+      const tween = gsap.to(".trigger", {
         backgroundImage:
           "linear-gradient(90deg, var(--left) 0%, var(--left) 100%, var(--right) 100%)",
         duration: 0.4,
-        //   ease: "back.in",
+       
+        
         ease: "none",
         stagger: {
           each: 0.1,
@@ -173,8 +173,8 @@ onMounted(async () => {
         },
 
         scrollTrigger: {
-          start: "center center",
-          trigger: "#header",
+          start: "-100 center",
+          trigger: ".trigger",
           // id:'lose',
           // markers:true,
           end: "+=300 center",
@@ -183,7 +183,7 @@ onMounted(async () => {
       });
     },
     "(max-width: 800px)": function () {
-      const tween = gsap.to("li", {
+      const tween = gsap.to(".trigger", {
         backgroundImage:
           "linear-gradient(90deg, var(--left) 0%, var(--left) 100%, var(--right) 100%)",
         duration: 0.4,
@@ -220,6 +220,7 @@ const time = gsap.timeline();
 
  })
 
+
   ScrollTrigger.getAll().forEach((element) => {
     element.enable();
     element.refresh();
@@ -240,29 +241,8 @@ onUnmounted(() => {
 });
 
  
- const review = ref(null)
-   console.log(review)
-  defineExpose({ review})
-
-//  onUpdated(() => {
-//       gsap.defaults({ ease: "none" });
-   
-//   gsap.set('.review_customer_card', {opacity:0, y:-150 });
  
-// console.log('shit')
-//   ScrollTrigger.batch('.review_customer_card', {
-    
-//    onEnter: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: .15, overwrite: true}),
-  
-//   onEnterBack: batch => gsap.to(batch, {opacity: 1,y: 0, stagger: 0.15, overwrite: true}),
-  
-     
-//   });
 
-//   ScrollTrigger.addEventListener("refreshInit", () =>
-//     gsap.set('.review_customer_card', { y: 0  })
-//   );
-//  })
 
 </script>
 

@@ -9,7 +9,7 @@
 
       <div class="footer_info">
         <h2 class="footer_info-header">
-          This is demo page made with Vuejs and Firebase
+          This is a demo page made with Vuejs and Firebase
         </h2>
       </div>
     </div>
@@ -67,6 +67,8 @@ async function submit() {
 </script>
 
 <style lang="scss" scoped>
+@import "open-props/style";
+@import "open-props/normalize";
 .footer {
   display: grid;
   grid-auto-flow: column;
@@ -113,7 +115,8 @@ async function submit() {
       outline: none;
       border: none;
       border-radius: 2px;
-      height: var(--size-fluid-4);
+      height: var(--size-header-3);
+      
 
       @include respond(tab-port) {
         // flex-basis: var(--size-fluid-7);
@@ -147,11 +150,18 @@ async function submit() {
       gap: 20px 0;
       grid-auto-flow: row;
     }
+    & input {
+      height: var(--size-fluid-4);
+    }
+    & textarea {
+      height: var(--size-fluid-6);
+    }
     & input,
     label:not(:first-child),
     textarea {
       width: 80%;
       margin-block-start: var(--size-fluid-1);
+
     }
 
     & label {
@@ -160,12 +170,14 @@ async function submit() {
     }
     & button {
       margin-block: var(--size-fluid-2);
-      height: var(--size-fluid-3);
-      width: var(--size-fluid-6);
+      // height: var(--size-fluid-4);
+      padding: var(--size-fluid-1) var(--size-fluid-1);
+      width: var(--size-fluid-7);
       border-radius: 2px;
       color: $color-primary-white;
       background-color: $color-primary-purple;
       position: relative;
+      font-size: var(--font-size-fluid-1);
 
       &:active {
         top: 2px;
@@ -183,7 +195,7 @@ async function submit() {
   }
 }
 
-a {
+a,a:visited {
   position: relative;
   background-color: #fff8f8;
   color: $color-primary-light-green;

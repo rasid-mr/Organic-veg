@@ -1,28 +1,25 @@
 <template>
-  <!-- <LandingPage />
-  <GladiatorSection />
-  <PepsiVsBroccole />
-  <ProductPage /> -->
-<RouterView v-slot="{ Component }">
+  <router-view></router-view>
+<!-- <RouterView v-slot="{ Component }">
   <template v-if="Component">
     <Transition mode="out-in">
-      <!-- <KeepAlive> -->
-        <Suspense>
+      <<KeepAlive> -->
+        <!-- <Suspense> -->
           <!-- main content -->
-          <component :is="Component"></component>
+          <!-- <component :is="Component"></component> -->
 
           <!-- loading state -->
-          <template #fallback>
-            <p class="load">
+          <!-- <template #fallback> -->
+            <!-- <p class="load">
 
               Loading...
             </p>
-          </template>
-        </Suspense>
+          </template> -->
+        <!-- </Suspense> -->
       <!-- </KeepAlive> -->
-    </Transition>
-  </template>
-</RouterView>
+    <!-- </Transition> -->
+  <!-- </template> -->
+<!-- </RouterView> --> -->
    
 </template>
 

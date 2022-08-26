@@ -50,9 +50,9 @@
               </div>
               <button
                 :data-index="index"
-                @click="cart"
+                @click="$emit('increaseBy', $event, 1)"
                 class="media_element_button-cart cart"
-                
+                :data-name="head.name"
               >
                 Add to Cart
               </button>
@@ -67,16 +67,17 @@
         </li>
       </template>
     </div>
+   
   </div>
   <!-- <div class="fruit">
 
   </div> -->
   <!-- <button @click="gocart">cart </button> -->
-  <div class="toast">
+  <!-- <div class="toast">
     <p>You have carted {{cartCounter}} items.</p>
     <button @click="gocart"> Cart</button>
-   
   </div>
+  <p>{{number}}</p> -->
 </template>
 
 <script setup>
@@ -106,11 +107,13 @@ const auth = getAuth();
 const db = getFirestore();
 const router = useRouter();
 const props = defineProps({
-  type:String
+  type:String,
+  no: Number,
 })
-
+let number = ref('')
 let productType = computed(() => props.type);
- 
+ number.value = computed(() => props.no)
+ defineEmits(['increaseBy'])
   // const querySnapshot = await getDocs(collection(db, "vegetable"));
 
 
@@ -161,6 +164,8 @@ let index = ref();
 let image = ref();
 let cartCounter = ref(0)
 let buttonCart = ref();
+
+
 const cart = async (e) => {
   // router.push('/login')
   
@@ -211,11 +216,9 @@ const cart = async (e) => {
     
   } else {
      
-    console.log('really')
-cartCounter.value = cartCounter.value + 1;
-
-document.querySelector('.toast').style.transform = `translateX(0)`
-document.querySelector('.toast').style.opacity = `1`
+//   number.value = number.value + 1
+// document.querySelector('.toast').style.transform = `translateX(0)`
+// document.querySelector('.toast').style.opacity = `1`
 
 // toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
     // router.push("/login");
@@ -228,7 +231,7 @@ const gocart = (() => {router.push('/cart')})
 // /////////////
 // incrementing  likes
 let likes = ref();
-let likeBolean = ref(true);
+
 
 const incrementLike = async (e) => {
   
@@ -292,7 +295,8 @@ const incrementLike = async (e) => {
 
 defineExpose({
  
-buttonCart
+buttonCart,
+number
 });
 </script>
 

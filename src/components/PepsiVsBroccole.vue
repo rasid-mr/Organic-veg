@@ -332,7 +332,7 @@ onUnmounted(() => {
 }
 
 .around {
-// opacity: 0;
+opacity: 0;
 fill: none;
 }
  .search {
